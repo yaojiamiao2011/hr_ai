@@ -38,16 +38,8 @@ Thumbs.db
 *.temp
 
 # Frontend build artifacts
-frontend/dist/
-frontend/build/
-
-# Frontend dependencies
 frontend/node_modules/
-
-# Frontend IDE files
-frontend/.vscode/
-frontend/.idea/
-
-# Frontend auto-generated files
+frontend/dist/
+frontend/.vite/
 frontend/auto-imports.d.ts
 frontend/components.d.ts
