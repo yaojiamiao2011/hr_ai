@@ -263,6 +263,53 @@ const handleDelete = (row: ConfigItem, index: number) => {
   })
 }
 
+onMounted(() => {
+  // 初始化一些示例数据
+  configList.value = [
+    {
+      id: 1,
+      name: 'GPT-4 配置',
+      model: 'gpt-4',
+      modelId: 'gpt-4-turbo-preview',
+      apiEndpoint: 'https://api.openai.com/v1/chat/completions',
+      apiKey: 'sk-*************************',
+      timeout: 30000,
+      maxTokens: 4096,
+      temperature: 0.7,
+      description: '用于复杂数据处理和决策支持',
+      status: 'active',
+      createTime: '2024-01-15 10:30:00'
+    },
+    {
+      id: 2,
+      name: '文心一言配置',
+      model: 'wenxin',
+      modelId: 'ernie-bot-4',
+      apiEndpoint: 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions',
+      apiKey: '********************',
+      timeout: 30000,
+      maxTokens: 2048,
+      temperature: 0.8,
+      description: '用于中文文本处理和分析',
+      status: 'active',
+      createTime: '2024-01-20 14:20:00'
+    },
+    {
+      id: 3,
+      name: '通义千问配置',
+      model: 'qianwen',
+      modelId: 'qwen-turbo',
+      apiEndpoint: 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
+      apiKey: '************************',
+      timeout: 60000,
+      maxTokens: 2048,
+      temperature: 0.7,
+      description: '阿里巴巴大语言模型配置',
+      status: 'inactive',
+      createTime: '2024-01-25 16:45:00'
+    }
+  ]
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
 const fetchConfigs = async () => {
   try {
     const response = await fetch('http://localhost:8080/api/ai-config')
@@ -291,6 +338,55 @@ const fetchConfigs = async () => {
 
 onMounted(() => {
   fetchConfigs()
+
+=======
+onMounted(() => {
+  // 初始化一些示例数据
+  configList.value = [
+    {
+      id: 1,
+      name: 'GPT-4 配置',
+      model: 'gpt-4',
+      modelId: 'gpt-4-turbo-preview',
+      apiEndpoint: 'https://api.openai.com/v1/chat/completions',
+      apiKey: 'sk-*************************',
+      timeout: 30000,
+      maxTokens: 4096,
+      temperature: 0.7,
+      description: '用于复杂数据处理和决策支持',
+      status: 'active',
+      createTime: '2024-01-15 10:30:00'
+    },
+    {
+      id: 2,
+      name: '文心一言配置',
+      model: 'wenxin',
+      modelId: 'ernie-bot-4',
+      apiEndpoint: 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions',
+      apiKey: '********************',
+      timeout: 30000,
+      maxTokens: 2048,
+      temperature: 0.8,
+      description: '用于中文文本处理和分析',
+      status: 'active',
+      createTime: '2024-01-20 14:20:00'
+    },
+    {
+      id: 3,
+      name: '通义千问配置',
+      model: 'qianwen',
+      modelId: 'qwen-turbo',
+      apiEndpoint: 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
+      apiKey: '************************',
+      timeout: 60000,
+      maxTokens: 2048,
+      temperature: 0.7,
+      description: '阿里巴巴大语言模型配置',
+      status: 'inactive',
+      createTime: '2024-01-25 16:45:00'
+    }
+  ]
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
 })
 </script>
 

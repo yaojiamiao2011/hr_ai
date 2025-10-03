@@ -1,9 +1,59 @@
+# Maven dependencies and build artifacts
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE specific files
+.mvn/wrapper/
+!.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/MavenWrapperDownloader.java
+
+# IntelliJ IDEA
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+<<<<<<< HEAD
+
+# Eclipse
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+.settings/
+.project
+.classpath
+bin/
+<<<<<<< HEAD
+
+# VS Code
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+.vscode/
+
+# Database files
+*.db
+
+# Log files
+*.log
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+<<<<<<< HEAD
+*.temp
+*.temp
+
 # Frontend build artifacts
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
 frontend/auto-imports.d.ts
 frontend/components.d.ts
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+# Maven dependencies and build artifacts
+target/
+!.mvn/wrapper/maven-wrapper.jar
 
 # Backend build artifacts
 hr_ai_project/target/
@@ -11,15 +61,24 @@ hr_ai_project/.mvn/wrapper/
 hr_ai_project/!hr_ai.db
 
 # IDE specific files
+.mvn/wrapper/
+!.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/MavenWrapperDownloader.java
+
+# IntelliJ IDEA
 .idea/
 *.iws
 *.iml
 *.ipr
 out/
+
+# Eclipse
 .settings/
 .project
 .classpath
 bin/
+
+# VS Code
 .vscode/
 
 # Database files
@@ -35,3 +94,67 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/auto-imports.d.ts
+frontend/components.d.ts
+=======
+# Maven dependencies and build artifacts
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE specific files
+.mvn/wrapper/
+!.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/MavenWrapperDownloader.java
+
+# IntelliJ IDEA
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+<<<<<<< HEAD
+=======
+
+# Eclipse
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+.settings/
+.project
+.classpath
+bin/
+<<<<<<< HEAD
+=======
+
+# VS Code
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
+.vscode/
+
+# Database files
+*.db
+
+# Log files
+*.log
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+<<<<<<< HEAD
+*.temp
+=======
+*.temp
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/auto-imports.d.ts
+frontend/components.d.ts
+>>>>>>> 2d1a9c991ab819a44f9e0900c3454e5c9a44da5a
