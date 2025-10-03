@@ -5,9 +5,11 @@ import com.example.hrai.service.AIModelConfigService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -67,7 +69,7 @@ public class AIModelConfigController {
         return aiModelConfigService.getActiveConfigs();
     }
 
-    @PostMapping("/test/{id}")
+    @PostMapping(value = "/test/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Test an AI model configuration")
     public ResponseEntity<?> testConfig(@PathVariable Long id, @RequestBody Map<String, String> request) {
         try {
@@ -79,6 +81,12 @@ public class AIModelConfigController {
 
             AIModelConfig config = configOpt.get();
             String prompt = request.getOrDefault("prompt", "");
+
+            // 处理中文字符编码
+            if (prompt != null) {
+                byte[] bytes = prompt.getBytes(StandardCharsets.UTF_8);
+                prompt = new String(bytes, StandardCharsets.UTF_8);
+            }
 
             if (!config.getIsActive()) {
                 return ResponseEntity.badRequest().body(Map.of(

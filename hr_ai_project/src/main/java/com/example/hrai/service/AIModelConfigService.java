@@ -60,14 +60,30 @@ public class AIModelConfigService {
  @SuppressWarnings("unchecked")
     public String testModel(AIModelConfig config, String prompt) {
         try {
-            // 构建请求体
-            Map<String, Object> requestBody = Map.of(
-                "model", config.getModelName(),
-                "messages", Map.of(
-                    "role", "user",
-                    "content", prompt
-                )
-            );
+            Map<String, Object> requestBody;
+
+            // 根据不同的提供商构建不同的请求体
+            if (config.getProvider().equalsIgnoreCase("ModelScope")) {
+                // ModelScope需要不同的请求格式
+                requestBody = Map.of(
+                    "model", config.getModelName(),
+                    "messages", List.of(
+                        Map.of(
+                            "role", "user",
+                            "content", prompt
+                        )
+                    )
+                );
+            } else {
+                // 其他提供商使用原始格式
+                requestBody = Map.of(
+                    "model", config.getModelName(),
+                    "messages", Map.of(
+                        "role", "user",
+                        "content", prompt
+                    )
+                );
+            }
 
             // 根据不同的提供商采用不同的调用方式
             if (config.getProvider().equalsIgnoreCase("ModelScope")) {
