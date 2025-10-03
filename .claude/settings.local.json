@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(mvn spring-boot:run:*)",
+      "Bash(curl:*)",
+      "Bash(curl -v http://localhost:8080/api/ai-configs)",
+      "Bash(netstat:*)",
+      "Bash(findstr :8080)",
+      "Bash(taskkill:*)",
+      "Bash(sqlite3 hr_ai.db \".tables\")",
+      "Bash(sqlite3:*)",
+      "Bash(rm hr_ai.db)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
