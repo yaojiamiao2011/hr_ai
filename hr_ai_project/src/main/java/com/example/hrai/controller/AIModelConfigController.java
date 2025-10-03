@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -64,5 +65,43 @@ public class AIModelConfigController {
     @Operation(summary = "Get all active AI model configurations")
     public List<AIModelConfig> getActiveConfigs() {
         return aiModelConfigService.getActiveConfigs();
+    }
+
+    @PostMapping("/test/{id}")
+    @Operation(summary = "Test an AI model configuration")
+    public ResponseEntity<?> testConfig(@PathVariable Long id, @RequestBody Map<String, String> request) {
+        try {
+            // 获取配置信息
+            Optional<AIModelConfig> configOpt = aiModelConfigService.getConfigById(id);
+            if (!configOpt.isPresent()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            AIModelConfig config = configOpt.get();
+            String prompt = request.getOrDefault("prompt", "");
+
+            if (!config.getIsActive()) {
+                return ResponseEntity.badRequest().body(Map.of(
+                    "error", "Configuration is not active",
+                    "message", "该模型配置未启用，无法测试"
+                ));
+            }
+
+            // 调用AI服务进行测试
+            String response = aiModelConfigService.testModel(config, prompt);
+
+            return ResponseEntity.ok(Map.of(
+                "content", response,
+                "model", config.getModelName(),
+                "provider", config.getProvider(),
+                "timestamp", System.currentTimeMillis()
+            ));
+
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(Map.of(
+                "error", "Test failed",
+                "message", e.getMessage()
+            ));
+        }
     }
 }

@@ -18,6 +18,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'AIConfig',
         component: () => import('@/views/ai-config/index.vue'),
         meta: { title: '大模型配置', icon: 'Setting' }
+      },
+      {
+        path: 'ai-config/test/:id',
+        name: 'AIConfigTest',
+        component: () => import('@/views/ai-config/test.vue'),
+        meta: { title: '模型测试', icon: 'ChatDotRound' }
       }
     ]
   }

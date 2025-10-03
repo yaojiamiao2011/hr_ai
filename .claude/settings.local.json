@@ -10,7 +10,10 @@
       "Bash(taskkill:*)",
       "Bash(sqlite3 hr_ai.db \".tables\")",
       "Bash(sqlite3:*)",
-      "Bash(rm hr_ai.db)"
+      "Bash(rm hr_ai.db)",
+      "WebSearch",
+      "Bash(findstr:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
