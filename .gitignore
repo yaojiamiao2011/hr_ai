@@ -36,3 +36,18 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Frontend build artifacts
+frontend/dist/
+frontend/build/
+
+# Frontend dependencies
+frontend/node_modules/
+
+# Frontend IDE files
+frontend/.vscode/
+frontend/.idea/
+
+# Frontend auto-generated files
+frontend/auto-imports.d.ts
+frontend/components.d.ts

@@ -38,6 +38,13 @@
             <version>3.42.0.0</version>
         </dependency>
 
+        <!-- SQLite Dialect for Hibernate -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-community-dialects</artifactId>
+            <version>6.4.0.Final</version>
+        </dependency>
+
         <!-- Swagger -->
         <dependency>
             <groupId>org.springdoc</groupId>
