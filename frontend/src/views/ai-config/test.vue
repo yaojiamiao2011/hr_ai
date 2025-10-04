@@ -146,7 +146,7 @@ const loadModelConfig = async () => {
   try {
     loading.value = true
     const configId = route.params.id
-    const response = await fetch(`http://localhost:8080/api/ai-config/${configId}`)
+    const response = await fetch(`/api/ai-config/${configId}`)
 
     if (response.ok) {
       const data = await response.json()
@@ -186,7 +186,7 @@ const sendPrompt = async () => {
   processing.value = true
 
   try {
-    const response = await fetch(`http://localhost:8080/api/ai-config/test/${modelConfig.value.id}`, {
+    const response = await fetch(`/api/ai-config/test/${modelConfig.value.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

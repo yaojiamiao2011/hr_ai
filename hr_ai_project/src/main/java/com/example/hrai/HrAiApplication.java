@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @EntityScan(basePackages = "com.example.hrai.entity")
 public class HrAiApplication {
 
+    
     public static void main(String[] args) {
         SpringApplication.run(HrAiApplication.class, args);
     }

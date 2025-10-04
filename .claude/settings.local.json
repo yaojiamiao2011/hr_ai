@@ -29,7 +29,12 @@
       "Bash(git commit -m \"$(cat <<''EOF''\n添加Node.js进程管理规范\n\n在开发规范中添加新规则，禁止终止所有node进程，要求只终止特定进程以避免影响其他项目。\n\nGenerated with [Claude Code](https://claude.ai/code)\nvia [Happy](https://happy.engineering)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nCo-Authored-By: Happy <yesreply@happy.engineering>\nEOF\n)\")",
       "Bash(powershell -Command:*)",
       "Bash(Get-AppXPackage:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(systeminfo:*)",
+      "Bash(java:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(git --version:*)"
     ],
     "deny": [],
     "ask": []
