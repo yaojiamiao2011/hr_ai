@@ -80,7 +80,7 @@
           </div>
         </template>
         <el-row :gutter="20">
-          <el-col :span="8">
+          <el-col :span="6">
             <div class="action-item" @click="navigateToAIConfig">
               <div class="action-icon">
                 <el-icon><Setting /></el-icon>
@@ -91,7 +91,7 @@
               </div>
             </div>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="6">
             <div class="action-item">
               <div class="action-icon">
                 <el-icon><UserFilled /></el-icon>
@@ -102,7 +102,7 @@
               </div>
             </div>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="6">
             <div class="action-item">
               <div class="action-icon">
                 <el-icon><DataAnalysis /></el-icon>
@@ -110,6 +110,17 @@
               <div class="action-text">
                 <h3>数据分析</h3>
                 <p>查看统计报表</p>
+              </div>
+            </div>
+          </el-col>
+          <el-col :span="6">
+            <div class="action-item" @click="navigateToVideoTool">
+              <div class="action-icon">
+                <el-icon><VideoPlay /></el-icon>
+              </div>
+              <div class="action-text">
+                <h3>视频工具</h3>
+                <p>视频内容提取</p>
               </div>
             </div>
           </el-col>
@@ -172,6 +183,10 @@ const systemStatus = ref({
 
 const navigateToAIConfig = () => {
   router.push('/ai-config')
+}
+
+const navigateToVideoTool = () => {
+  router.push('/video-tool')
 }
 </script>
 
@@ -344,6 +359,18 @@ const navigateToAIConfig = () => {
   .action-icon {
     margin-right: 0;
     margin-bottom: 10px;
+  }
+
+  /* 在小屏幕上将4列变为2列 */
+  .el-col {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 在更小的屏幕上将2列变为1列 */
+  .el-col {
+    width: 100%;
   }
 }
 

@@ -24,6 +24,24 @@ const routes: Array<RouteRecordRaw> = [
         name: 'AIConfigTest',
         component: () => import('@/views/ai-config/test.vue'),
         meta: { title: '模型测试', icon: 'ChatDotRound' }
+      },
+      {
+        path: 'video-tool',
+        name: 'VideoTool',
+        component: () => import('@/views/video-tool/index.vue'),
+        meta: { title: '视频工具', icon: 'VideoPlay' }
+      },
+      {
+        path: 'video-tool/test-video',
+        name: 'TestVideo',
+        component: () => import('@/views/video-tool/test-video.vue'),
+        meta: { title: '测试视频转文本', icon: 'VideoPlay' }
+      },
+      {
+        path: 'video-tool/test-specific-video',
+        name: 'TestSpecificVideo',
+        component: () => import('@/views/video-tool/test-specific-video.vue'),
+        meta: { title: '测试特定视频转文本', icon: 'VideoPlay' }
       }
     ]
   }

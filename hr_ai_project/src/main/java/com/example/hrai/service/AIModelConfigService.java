@@ -57,6 +57,25 @@ public class AIModelConfigService {
         return aiModelConfigRepository.findByModelName(modelName);
     }
 
+    public Optional<AIModelConfig> getDefaultConfig() {
+        return aiModelConfigRepository.findByIsDefaultTrue();
+    }
+
+    public AIModelConfig setDefaultConfig(Long id) {
+        // 首先将所有配置的isDefault设置为false
+        List<AIModelConfig> allConfigs = aiModelConfigRepository.findAll();
+        for (AIModelConfig config : allConfigs) {
+            config.setIsDefault(false);
+        }
+        aiModelConfigRepository.saveAll(allConfigs);
+
+        // 然后将指定ID的配置设置为默认
+        AIModelConfig config = aiModelConfigRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Config not found for id: " + id));
+        config.setIsDefault(true);
+        return aiModelConfigRepository.save(config);
+    }
+
  @SuppressWarnings("unchecked")
     public String testModel(AIModelConfig config, String prompt) {
         try {

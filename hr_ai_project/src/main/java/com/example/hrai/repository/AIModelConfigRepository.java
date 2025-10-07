@@ -12,4 +12,6 @@ public interface AIModelConfigRepository extends JpaRepository<AIModelConfig, Lo
     List<AIModelConfig> findByIsActiveTrue();
     Optional<AIModelConfig> findByModelName(String modelName);
     List<AIModelConfig> findByProvider(String provider);
+    Optional<AIModelConfig> findByIsDefaultTrue();
+    List<AIModelConfig> findByIsDefault(Boolean isDefault);
 }

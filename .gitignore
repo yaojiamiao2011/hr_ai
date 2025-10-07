@@ -80,6 +80,7 @@ bin/
 
 # VS Code
 .vscode/
+.claude.json
 
 # Database files
 *.db

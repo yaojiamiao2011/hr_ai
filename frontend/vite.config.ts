@@ -24,11 +24,12 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000,
+    host: '0.0.0.0', // 添加这一行，使服务器监听所有网络接口
+    port: 8000,
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8090',
+        target: 'http://127.0.0.1:8081',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
       },

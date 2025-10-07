@@ -3,40 +3,149 @@
     "allow": [
       "Bash(npm run dev:*)",
       "Bash(mvn spring-boot:run:*)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn install:*)",
+      "Bash(mvn compile:*)",
+      "Bash(mvn test:*)",
       "Bash(curl:*)",
-      "Bash(curl -v http://localhost:8080/api/ai-configs)",
+      "Bash(curl -v http://127.0.0.1:8080/api/ai-configs)",
       "Bash(netstat:*)",
       "Bash(findstr :8080)",
+      "Bash(findstr:*)",
       "Bash(taskkill:*)",
+      "Bash(ps:*)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(pgrep:*)",
+      "Bash(jps:*)",
+      "Bash(jstack:*)",
       "Bash(sqlite3 hr_ai.db \".tables\")",
       "Bash(sqlite3:*)",
       "Bash(rm hr_ai.db)",
-      "WebSearch",
-      "Bash(findstr:*)",
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(unzip:*)",
+      "Bash(zip:*)",
+      "Bash(tar:*)",
+      "Bash(java:*)",
+      "Bash(javac:*)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(pip:*)",
+      "Bash(git:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\n添加开发规范读取功能并保存到记忆中\n\n实现了读取docs/rules.md文件中的开发规范，并将其保存到记忆中以便后续参考。主要规范包括Java版本兼容性、版本管理、文档精简要求、端口管理规则、网络地址使用规范、代码提交规范、构建脚本创建规范、依赖管理规范、项目验证规范和版本管理规范。\n\n同时根据规范要求，当用户说\"告一段落\"时自动执行代码提交操作。\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git commit:*)",
       "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git clone:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(git merge:*)",
+      "Bash(git reset:*)",
+      "Bash(git stash:*)",
+      "Bash(git clean:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''
+添加开发规范读取功能并保存到记忆中
+
+实现了读取docs/rules.md文件中的开发规范，并将其保存到记忆中以便后续参考。主要规范包括Java版本兼容性、版本管理、文档精简要求、端口管理规则、网络地址使用规范、代码提交规范、构建脚本创建规范、依赖管理规范、项目验证规范和版本管理规范。
+
+同时根据规范要求，当用户说\"告一段落\"时自动执行代码提交操作。
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''
+添加Node.js进程管理规范
+
+在开发规范中添加新规则，禁止终止所有node进程，要求只终止特定进程以避免影响其他项目。
+
+Generated with [Claude Code](https://claude.ai/code)
+via [Happy](https://happy.engineering)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+Co-Authored-By: Happy <yesreply@happy.engineering>
+EOF
+)\")",
       "Bash(hr_ai_project/start-backend.bat)",
       "Bash(frontend/npm run dev)",
+      "Bash(frontend/npm run build)",
+      "Bash(frontend/npm run test)",
+      "Bash(frontend/pnpm:*)",
+      "Bash(frontend/yarn:*)",
+      "Bash(frontend/vite:*)",
       "WebFetch(domain:www.modelscope.cn)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:maven.repository)",
+      "WebFetch(domain:repo1.maven.org)",
+      "WebSearch",
+      "WebSearch(domain:docs.spring.io)",
+      "WebSearch(domain:vosk.ai)",
+      "WebSearch(domain:java.com)",
+      "WebSearch(domain:stackoverflow.com)",
       "Bash(start:*)",
       "Bash(./start-backend.bat:*)",
+      "Bash(./test-api.sh:*)",
       "Bash(jobs:*)",
       "Bash(tasklist:*)",
       "Bash(test-api.bat:*)",
       "Bash(chmod:*)",
-      "Bash(./test-api.sh:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\n添加Node.js进程管理规范\n\n在开发规范中添加新规则，禁止终止所有node进程，要求只终止特定进程以避免影响其他项目。\n\nGenerated with [Claude Code](https://claude.ai/code)\nvia [Happy](https://happy.engineering)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nCo-Authored-By: Happy <yesreply@happy.engineering>\nEOF\n)\")",
-      "Bash(powershell -Command:*)",
-      "Bash(Get-AppXPackage:*)",
-      "Bash(rm:*)",
       "Bash(systeminfo:*)",
-      "Bash(java:*)",
-      "Bash(node --version:*)",
-      "Bash(npm --version:*)",
-      "Bash(git --version:*)"
+      "Bash(java --version)",
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(python --version)",
+      "Bash(git --version)",
+      "Bash(maven:*)",
+      "Bash(mvn:*)",
+      "Bash(npm install:*)",
+      "Bash(npm update:*)",
+      "Bash(npm run:*)",
+      "Bash(npx:*)",
+      "Bash(npx playwright:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(npx playwright init:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(mvn compile:*)",
+      "Bash(npm run build:*)",
+      "Bash(start-dev.bat:*)",
+      "Bash(set:*)",
+      "Bash(del test_chinese_content.json)",
+      "Bash(timeout:*)",
+      "Bash(wget:*)",
+      "Bash(curl:*)",
+      "Bash(java -jar:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "existing_behavior": {
+      "trust_project_code": true,
+      "auto_approve_common_operations": true,
+      "reduce_security_warnings": true,
+      "trust_local_modifications": true
+    }
+  },
+  "behavior": {
+    "suppress_confirmation_dialogs": true,
+    "auto_approve_safe_operations": true,
+    "local_project_trust": "full",
+    "disable_trivial_prompts": true,
+    "auto_approve_file_operations": true,
+    "auto_approve_bash_commands": true,
+    "auto_approve_search_operations": true
   }
 }

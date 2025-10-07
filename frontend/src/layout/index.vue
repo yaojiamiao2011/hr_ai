@@ -21,6 +21,15 @@
           <el-icon><Setting /></el-icon>
           <template #title>大模型配置</template>
         </el-menu-item>
+        <el-sub-menu index="video-tool" data-testid="video-tool-menu">
+          <template #title>
+            <el-icon><VideoPlay /></el-icon>
+            <span data-testid="video-tool-menu-text">视频工具</span>
+          </template>
+          <el-menu-item index="/video-tool" data-testid="video-processing-menu">视频处理</el-menu-item>
+          <el-menu-item index="/video-tool/test-video" data-testid="test-video-menu">测试视频转文本</el-menu-item>
+          <el-menu-item index="/video-tool/test-specific-video" data-testid="test-specific-video-menu">测试特定视频转文本</el-menu-item>
+        </el-sub-menu>
       </el-menu>
     </div>
 
@@ -59,6 +68,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { ElSubMenu } from 'element-plus'
+import { House, Setting, VideoPlay, User, ArrowDown } from '@element-plus/icons-vue'
 
 const route = useRoute()
 

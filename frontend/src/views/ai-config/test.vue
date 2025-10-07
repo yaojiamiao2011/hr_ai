@@ -43,6 +43,7 @@
             :rows="4"
             placeholder="请输入您想测试的问题或提示词..."
             :disabled="processing"
+            @keydown.enter="handleEnterKey"
           />
           <div class="input-actions">
             <el-button
@@ -231,6 +232,18 @@ const clearConversation = () => {
   conversation.value = []
   prompt.value = ''
   ElMessage.success('对话已清空')
+}
+
+// 处理回车键事件
+const handleEnterKey = (event: KeyboardEvent) => {
+  // 如果按的是Enter键且没有按住Shift键，则发送消息
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault() // 防止换行
+    if (prompt.value.trim() && !processing.value) {
+      sendPrompt()
+    }
+  }
+  // 如果按住Shift键+Enter，则允许换行（默认行为）
 }
 
 // 页面加载时获取配置

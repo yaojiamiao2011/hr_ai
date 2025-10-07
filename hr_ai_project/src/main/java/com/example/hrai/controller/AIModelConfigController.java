@@ -69,6 +69,24 @@ public class AIModelConfigController {
         return aiModelConfigService.getActiveConfigs();
     }
 
+    @GetMapping("/default")
+    @Operation(summary = "Get default AI model configuration")
+    public ResponseEntity<AIModelConfig> getDefaultConfig() {
+        Optional<AIModelConfig> config = aiModelConfigService.getDefaultConfig();
+        return config.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/set-default/{id}")
+    @Operation(summary = "Set an AI model configuration as default")
+    public ResponseEntity<AIModelConfig> setDefaultConfig(@PathVariable Long id) {
+        try {
+            AIModelConfig updatedConfig = aiModelConfigService.setDefaultConfig(id);
+            return ResponseEntity.ok(updatedConfig);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping(value = "/test/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Test an AI model configuration")
     public ResponseEntity<?> testConfig(@PathVariable Long id, @RequestBody Map<String, String> request) {

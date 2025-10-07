@@ -24,8 +24,8 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="createTime" label="创建时间" width="180" />
-        <el-table-column label="操作" width="280" fixed="right">
+                <el-table-column prop="createTime" label="创建时间" width="180" />
+        <el-table-column label="操作" width="320" fixed="right">
           <template #default="{ row, $index }">
             <el-button size="small" @click="openDialog('edit', row)">编辑</el-button>
             <el-button
@@ -42,6 +42,14 @@
               v-if="row.status === 'active'"
             >
               测试
+            </el-button>
+            <el-button
+              size="small"
+              :type="row.isDefault ? 'success' : 'default'"
+              @click="setDefaultConfig(row, $index)"
+              :disabled="row.isDefault"
+            >
+              {{ row.isDefault ? '已是默认' : '设为默认' }}
             </el-button>
             <el-button size="small" type="danger" @click="handleDelete(row, $index)">删除</el-button>
           </template>
@@ -258,7 +266,31 @@ const toggleStatus = (row: ConfigItem, index: number) => {
   ElMessage.success(`${row.status === 'active' ? '禁用' : '启用'}成功`)
 }
 
-const handleDelete = (row: ConfigItem, index: number) => {
+const setDefaultConfig = async (row: ConfigItem, index: number) => {
+  try {
+    const response = await fetch(`/api/ai-config/set-default/${row.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (response.ok) {
+      // 更新所有配置项的默认状态
+      configList.value.forEach((config, i) => {
+        configList.value[i].isDefault = config.id === row.id
+      })
+      ElMessage.success('设置默认大模型成功')
+    } else {
+      ElMessage.error('设置默认大模型失败')
+    }
+  } catch (error) {
+    console.error('设置默认大模型失败:', error)
+    ElMessage.error('设置默认大模型失败')
+  }
+}
+
+const handleDelete = async (row: ConfigItem, index: number) => {
   ElMessageBox.confirm(
     '确定要删除该配置吗？此操作不可恢复。',
     '删除确认',
@@ -267,9 +299,22 @@ const handleDelete = (row: ConfigItem, index: number) => {
       cancelButtonText: '取消',
       type: 'warning',
     }
-  ).then(() => {
-    configList.value.splice(index, 1)
-    ElMessage.success('删除配置成功')
+  ).then(async () => {
+    try {
+      const response = await fetch(`/api/ai-config/${row.id}`, {
+        method: 'DELETE'
+      })
+
+      if (response.ok) {
+        configList.value.splice(index, 1)
+        ElMessage.success('删除配置成功')
+      } else {
+        ElMessage.error('删除配置失败')
+      }
+    } catch (error) {
+      console.error('删除配置失败:', error)
+      ElMessage.error('删除配置失败')
+    }
   })
 }
 
@@ -291,7 +336,7 @@ const openTestDialog = (row: ConfigItem) => {
 
 const fetchConfigs = async () => {
   try {
-    const response = await fetch('http://localhost:8090/api/ai-config')
+    const response = await fetch('/api/ai-config')
     if (response.ok) {
       const data = await response.json()
       configList.value = data.map((item: any) => ({
@@ -306,6 +351,7 @@ const fetchConfigs = async () => {
         temperature: 0.7,
         description: item.provider + '大模型配置',
         status: item.isActive ? 'active' : 'inactive',
+        isDefault: item.isDefault || false,
         createTime: new Date(item.createdAt).toLocaleString('zh-CN')
       }))
     }

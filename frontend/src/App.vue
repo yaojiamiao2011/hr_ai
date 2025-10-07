@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app-root">
     <router-view />
   </div>
 </template>
@@ -21,7 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#app {
+#app-root {
   width: 100%;
   height: 100vh;
 }

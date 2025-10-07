@@ -26,6 +26,9 @@ public class AIModelConfig {
     @Column(name = "is_active")
     private Boolean isActive;
 
+    @Column(name = "is_default")
+    private Boolean isDefault;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -41,6 +44,7 @@ public class AIModelConfig {
         this.apiKey = apiKey;
         this.modelEndpoint = modelEndpoint;
         this.isActive = isActive;
+        this.isDefault = false; // 默认不是默认大模型
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
@@ -92,6 +96,14 @@ public class AIModelConfig {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
     }
 
     public LocalDateTime getCreatedAt() {
