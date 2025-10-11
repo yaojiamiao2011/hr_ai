@@ -24,11 +24,9 @@ public class AudioTranscriptionConfig {
      */
     @PostConstruct
     public void init() {
-        // 设置为true以启用Vosk离线语音识别引擎
-        // 设置为false以使用默认的模拟识别（用于演示）
-        audioTranscriptionService.setUseVosk(true);
-
-        System.out.println("音频转录服务配置完成");
-        System.out.println("当前使用Vosk引擎: " + audioTranscriptionService.isUseVosk());
+    // 设置为true以启用Vosk离线语音识别引擎
+    // 设置为false以使用默认的模拟识别（用于演示）
+    audioTranscriptionService.setUseVosk(true);
+    System.out.println("音频转录服务配置完成");
     }
 }

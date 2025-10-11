@@ -37,25 +37,20 @@ public class AudioTranscriptionService {
     }
 
     /**
-     * 获取是否使用Vosk引擎的状态
-     */
-    public boolean isUseVosk() {
-        return useVosk;
-    }
-
-    /**
      * 从音视频文件中提取文本
      * 支持多种语音识别引擎（模拟识别和Vosk离线识别）
      */
     public String transcribeAudio(String videoPath) throws Exception {
         try {
             // 提取音频文件 (转换为语音识别支持的格式)
+
+
             String audioPath = extractAudioAsWav(videoPath);
 
             String transcription;
             if (useVosk) {
                 // 使用Vosk离线语音识别进行转录
-                transcription = voskService.transcribeAudio(videoPath);
+                transcription = voskService.transcribeAudio(audioPath);
             } else {
                 // 使用纯Java语音识别进行转录（默认）
                 transcription = transcribeWithJavaSpeechRecognition(audioPath);

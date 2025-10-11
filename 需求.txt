@@ -1,0 +1,65 @@
+在Windows系统上安装和使用OpenAI的Whisper进行语音识别是个不错的选择。下面为你整理了从安装到常用命令行参数的详细指南。
+
+🛠️ Windows系统安装Whper步骤
+在Windows上安装Whisper，需要先配置好它的运行环境。
+
+安装Python
+Whisper本身是基于Python的，所以首先需要安装Python。建议从Python官网下载 Python 3.8-3.11 的版本进行安装。安装时，请务必勾选 "Add Python to PATH" 选项，这样就可以在命令行中直接使用Python了。
+
+安装FFmpeg
+FFmpeg是一个强大的多媒体处理工具，Whisper需要用它来读取音频文件。
+
+你需要前往 FFmpeg官网 下载Windows版本的压缩包。
+
+解压后，将其中的 bin 文件夹路径（例如 C:\path\to\ffmpeg\bin）添加到系统的PATH环境变量中。这一步是关键，否则Whisper会找不到FFmpeg。
+
+安装CUDA工具包（可选，但推荐）
+如果你电脑有NVIDIA显卡，安装CUDA可以大幅提升语音识别的速度。
+
+你需要从 NVIDIA官网 下载并安装与你的显卡兼容的CUDA版本。
+
+安装时，可以选择只安装Runtime组件。
+
+安装PyTorch（支持CUDA版本）
+为了能让Whisper使用你的显卡进行加速，你需要安装支持对应CUDA版本的PyTorch。
+
+请前往 PyTorch官网，在"Get Started"页面根据你的CUDA版本选择相应的安装命令。
+
+例如，你可能会得到一个类似 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 的命令，在终端中执行它。
+
+安装Whisper
+完成以上步骤后，安装Whisper就很简单了。只需在命令行中执行以下命令：
+
+bash
+pip install openai-whisper
+📝 Whisper命令行参数详解
+安装成功后，你就可以通过命令行使用Whisper了。基本命令格式为 whisper audio_file [options]。下面是一些常用且重要的参数：
+
+参数	说明与常用值
+--model	指定使用的模型。可选 tiny, base, small, medium, large-v1, large-v2, large-v3，默认可能是 turbo（即 large-v3-turbo）。模型越大，精度通常越高，但速度越慢。
+--language	指定音频的语言。支持中文（zh）、英语（en）等。不指定时，Whisper会自动检测。
+--task	指定任务类型。transcribe（语音转录）或 translate（翻译成英语）。
+--output_dir	指定输出文件的目录。
+--output_format	指定输出文件的格式。可选 txt, vtt, srt, tsv, json, all（输出所有格式）。
+--temperature	采样温度，介于0和1之间，默认0。值越高输出越随机，一般保持默认即可。
+--verbose	是否在控制台打印出详细的进度和调试信息，默认为True。
+💡 使用示例与提示
+基础使用示例
+将一个名为 my_audio.wav 的音频文件转换为文字，并使用中等模型，可以运行：
+
+bash
+whisper my_audio.wav --model medium
+进阶使用示例
+如果你有一段中文录音，希望识别并生成SRT字幕文件，可以这样操作：
+
+bash
+whisper lecture_cn.wav --language zh --task transcribe --output_format srt --model large-v3
+一些实用提示
+
+模型选择：如果追求速度，tiny和base模型适合实时预览；如果追求准确度，medium和large系列模型更佳。
+
+文件路径：如果音频文件路径包含空格，需要用引号将路径括起来，例如 whisper "C:\My Audio\file.wav"。
+
+性能：确保已正确安装CUDA和对应版本的PyTorch，Whisper在启动时若显示CUDA版本信息，则表明正在使用GPU加速。
+
+希望这份详细的指南能帮助你在Windows上顺利安装和使用Whisper！如果你在安装过程中遇到具体问题，比如环境变量配置报错，可以随时再来提问。
